@@ -4,9 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mi Blog</title>
-    <body>
-      <h1>¡Bienvenido a mi Blog!</h1>
-      <p>Este es el inicio de mi proyecto Django</p>
-    </body>
   </head>
+  <body>
+    <h1>¡Bienvenido a mi Blog!</h1>
+    <hr />
+    {% if posts %} {% for post in posts %}
+    <div>
+      <h2>{{ post.title }}</h2>
+      <p>
+        <strong>Publicado:</strong> {{ post.date_posted | date:"d M Y H:i" }}
+      </p>
+      <p>{{ post.content }}</p>
+      <hr />
+    </div>
+    {% endfor %} {% else %}
+    <p>No hay posts aun. ¡Se el primero en publicar!</p>
+    {% endif %}
+  </body>
 </html>
